@@ -1,0 +1,12 @@
+<!ELEMENT project (modelVersion,groupId,artifactId,version,packaging,dependencies)>
+<!ELEMENT modelVersion (#PCDATA)>
+<!ELEMENT groupId (#PCDATA)>
+<!ELEMENT artifactId (#PCDATA)>
+<!ELEMENT version (#PCDATA)>
+<!ELEMENT packaging (#PCDATA)>
+<!ELEMENT dependencies (dependency,build+)>
+<!ELEMENT dependency (groupId,artifactId,version)>
+<!ELEMENT build (plugins,finalName)>
+<!ELEMENT plugins (plugin)>
+<!ELEMENT plugin (groupId,artifactId,version)>
+<!ELEMENT finalName (#PCDATA)>
