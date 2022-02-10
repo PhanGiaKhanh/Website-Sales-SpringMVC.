@@ -1,4 +1,4 @@
-﻿==========================***** Tái sử dụng <header> <footer> cho nhiều trang con Ex: /manage/*====================
+﻿==========================***** Sử dụng layout cho nhiều trang con Ex: /manage/* by decorator of sitemesh ====================
 B1 > pom.xml
 <!-- sitemesh -->
 <dependency>
