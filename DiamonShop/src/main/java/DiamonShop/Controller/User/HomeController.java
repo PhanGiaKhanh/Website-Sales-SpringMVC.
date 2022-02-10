@@ -1,4 +1,4 @@
-package DiamonShop.UserController;
+package DiamonShop.Controller.User;
 
 import java.util.List;
 
@@ -7,22 +7,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import DiamonShop.Dao.HomeDao;
+import DiamonShop.Dao.SlidesDao;
 import DiamonShop.Entiy.Slides;
+import DiamonShop.Service.User.HomeService;
 
 @Controller
 public class HomeController {
 	@Autowired
-	HomeDao homeDao;
+	HomeService homeService;
 	
 	@GetMapping(value = {"", "/home"})
 	public ModelAndView index() {
-		List<Slides> slides = homeDao.getDataSlides();
-		for (int i = 0; i < slides.size(); i++) {
-			System.out.println(slides.get(i).toString());
-		}
-		
-		return new ModelAndView("user/index");
+		ModelAndView mv= new ModelAndView("user/index");
+		mv.addObject("slides", homeService.getDataSlides());
+		return mv;
 	}
 	
 	@GetMapping(value = "product")

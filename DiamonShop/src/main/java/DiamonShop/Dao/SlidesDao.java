@@ -11,7 +11,7 @@ import DiamonShop.Entiy.MapperSlides;
 import DiamonShop.Entiy.Slides;
 
 @Repository
-public class HomeDao {
+public class SlidesDao {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
