@@ -21,4 +21,44 @@ B2 > web.xml
 	<filter-name>sitemesh</filter-name>
 	<url-pattern>/*</url-pattern>
 </filter-mapping>
- 
+B3 > decorators.xml
+<decorators defaultdir="/WEB-INF/views/layouts">
+	<decorator name="user" page="user.jsp">
+		<pattern>/home/*
+		</pattern>
+	</decorator>
+	<decorator name="admin" page="admin.jsp">
+		<pattern>/manage/*
+		</pattern>
+	</decorator>
+</decorators>
+ =================================================
+<JSTL> https://www.javatpoint.com/jstl-core-tags
+
+1 >> pom.xml 
+<!-- jstl -->
+<dependency>
+    <groupId>jstl</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+
+2 >>  file.jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+
+3 >> diamon-config-servlet.xml
+add <Beans
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+
+xsi::schemaLocation= ....  http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+> 
+
+<!-- Connect file assets  -->
+<mvc:annotation-driven />
+<mvc:resources location="/assets/" mapping="/assets/**" />
+<!-- ** lấy tất cả  -->
+
+4 >> file.jsp >> thay hết
+<link href="<c:url value="/assets/user/css/bootstrap.css"/>" rel="stylesheet" />
+
+5 >> header of eclipse >> Project >> clean >> Clean
