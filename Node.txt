@@ -1,4 +1,4 @@
-﻿***** Tái sử dụng <header> <footer> cho nhiều trang con Ex: home/*
+﻿==========================***** Tái sử dụng <header> <footer> cho nhiều trang con Ex: /manage/*====================
 B1 > pom.xml
 <!-- sitemesh -->
 <dependency>
@@ -22,9 +22,11 @@ B2 > web.xml
 	<url-pattern>/*</url-pattern>
 </filter-mapping>
 B3 > decorators.xml
+<!-- Khai báo đường dẫn cho decorators tìm đến lấy decorator -->
 <decorators defaultdir="/WEB-INF/views/layouts">
+	<!-- Lấy các file gọi tới đường dẫn /* truyền vào user.jsp -->
 	<decorator name="user" page="user.jsp">
-		<pattern>/home/*
+		<pattern>/*
 		</pattern>
 	</decorator>
 	<decorator name="admin" page="admin.jsp">
@@ -32,7 +34,16 @@ B3 > decorators.xml
 		</pattern>
 	</decorator>
 </decorators>
- =================================================
+
+================= ***** Decorators with <title> ========================================
+B1 >> user.jsp 
+<title><decorator:title default="Master-Layout"/></title>
+
+B2 >> <file>.jsp
+khai báo title EX: index.jsp 
+<title>Home</title>
+
+================= ***** add file <assests> for all file jsp=================================
 <JSTL> https://www.javatpoint.com/jstl-core-tags
 
 1 >> pom.xml 
@@ -62,3 +73,8 @@ xsi::schemaLocation= ....  http://www.springframework.org/schema/mvc http://www.
 <link href="<c:url value="/assets/user/css/bootstrap.css"/>" rel="stylesheet" />
 
 5 >> header of eclipse >> Project >> clean >> Clean
+
+================***** add layout for all file jsp ======= decorators ==========================
+
+
+

@@ -1,7 +1,9 @@
+<!-- Khai báo đường dẫn cho decorators tìm đến lấy decorator -->
 <decorators defaultdir="/WEB-INF/views/layouts">
 	<decorator name="user" page="user.jsp">
-		<pattern>/home/*
+		<pattern>/*
 		</pattern>
+		<!-- Lấy các file gọi tới đường dẫn /* truyền vào user.jsp -->
 	</decorator>
 	<decorator name="admin" page="admin.jsp">
 		<pattern>/manage/*

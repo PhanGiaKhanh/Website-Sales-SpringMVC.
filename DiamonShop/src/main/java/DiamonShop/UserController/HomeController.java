@@ -10,4 +10,9 @@ public class HomeController {
 	public ModelAndView index() {
 		return new ModelAndView("user/index");
 	}
+	
+	@GetMapping(value = "product")
+	public ModelAndView product() {
+		return new ModelAndView("user/product");
+	}
 }
