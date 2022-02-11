@@ -93,4 +93,12 @@ public ModelAndView init() {
 	return baseModelAndView;
 }
 
+================***** Để product xuất hiện random =======  ProductsDao ==========================
+sql.append("ORDER BY RAND() ");
+
+================***** Format jstl  >>> MONEY =======  ProductsDao ==========================
+https://www.javatpoint.com/jstl-formatting-tags
+https://www.javatpoint.com/jstl-fmt-formatnumber-tag
+
+<fmt:formatNumber type="number" groupingUsed="true" value="${Amount}" />
 

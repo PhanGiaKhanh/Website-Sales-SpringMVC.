@@ -2,6 +2,5 @@
     pageEncoding="UTF-8"%>
 <title>Product</title>
 <body>
-	<h1>Đây là trang sản phẩm</h1>
+	<h1>Đây là Category</h1>
 </body>
-</html>
