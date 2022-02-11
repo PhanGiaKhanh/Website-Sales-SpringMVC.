@@ -74,7 +74,23 @@ xsi::schemaLocation= ....  http://www.springframework.org/schema/mvc http://www.
 
 5 >> header of eclipse >> Project >> clean >> Clean
 
-================***** add layout for all file jsp ======= decorators ==========================
+================***** auto run method when run project =======  BaseController==========================
+*** Tạo ModelAndView tích hợp sẵn data dùng chung ***
 
+B1 >>
+<!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
+<dependency>
+    <groupId>javax.annotation</groupId>
+    <artifactId>javax.annotation-api</artifactId>
+    <version>1.3.2</version>
+</dependency>
+
+B2 >>  add @PostConstruct
+
+@PostConstruct
+public ModelAndView init() {
+	baseModelAndView.addObject("menus", baseHomeService.getDataMenus());
+	return baseModelAndView;
+}
 
 
