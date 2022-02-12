@@ -1,6 +1,6 @@
 package DiamonShop.Dao;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,7 +14,7 @@ public class CartDao extends BaseDao {
 	ProductsDao productsDao = new ProductsDao();
 
 	// add product in Cart
-	public HashMap<Integer, CartDto> addItemCart(int id, HashMap<Integer, CartDto> cart) {
+	public Map<Integer, CartDto> addItemCart(int id, Map<Integer, CartDto> cart) {
 		CartDto itemCart = new CartDto();
 		ProductsDto productsDto = productsDao.findProductById(id);
 		if (productsDto != null && cart.containsKey(id)) {
@@ -32,7 +32,7 @@ public class CartDao extends BaseDao {
 	}
 
 	// update product in Cart
-	public HashMap<Integer, CartDto> editCart(int id, int quantity, HashMap<Integer, CartDto> cart) {
+	public Map<Integer, CartDto> editCart(int id, int quantity, Map<Integer, CartDto> cart) {
 		if (cart == null) {
 			return cart;
 		}
@@ -48,7 +48,7 @@ public class CartDao extends BaseDao {
 	}
 
 	// reomve product in Cart
-	public HashMap<Integer, CartDto> removeCart(int id, HashMap<Integer, CartDto> cart) {
+	public Map<Integer, CartDto> removeCart(int id, Map<Integer, CartDto> cart) {
 		if (cart == null) {
 			return cart;
 		}
@@ -59,18 +59,18 @@ public class CartDao extends BaseDao {
 	}
 
 	// get total quantity
-	public int totalQuantity(HashMap<Integer, CartDto> cart) {
+	public int totalQuantity(Map<Integer, CartDto> cart) {
 		int totalQuantity = 0;
-		for (HashMap.Entry<Integer, CartDto> itemCart : cart.entrySet()) {
+		for (Map.Entry<Integer, CartDto> itemCart : cart.entrySet()) {
 			totalQuantity += itemCart.getValue().getQuantity();
 		}
 		return totalQuantity;
 	}
 
 	// get total price
-	public double totalPrice(HashMap<Integer, CartDto> cart) {
+	public double totalPrice(Map<Integer, CartDto> cart) {
 		double totalPrice = 0;
-		for (HashMap.Entry<Integer, CartDto> itemCart : cart.entrySet()) {
+		for (Map.Entry<Integer, CartDto> itemCart : cart.entrySet()) {
 			totalPrice += itemCart.getValue().getTotalPrice();
 		}
 		return totalPrice;

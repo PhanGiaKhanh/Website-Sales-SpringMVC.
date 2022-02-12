@@ -1,6 +1,7 @@
 package DiamonShop.Controller.User;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,7 +22,7 @@ public class CartController {
 	@SuppressWarnings("unchecked")
 	@GetMapping(value = "addCart/{id}")
 	public String addCart(@PathVariable int id, HttpSession session, HttpServletRequest request) {
-		HashMap<Integer, CartDto> mapCart = (HashMap<Integer, CartDto>) session.getAttribute("cart");
+		Map<Integer, CartDto> mapCart = (Map<Integer, CartDto>) session.getAttribute("cart");
 		if (mapCart == null) {
 			mapCart = new HashMap<>();
 		}
