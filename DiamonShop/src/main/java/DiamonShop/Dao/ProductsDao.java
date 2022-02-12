@@ -62,7 +62,7 @@ public class ProductsDao extends BaseDao {
 	private StringBuffer sqlProductByCateogyId(int categoryId) {
 		StringBuffer sql = sqlString();
 		sql.append("WHERE 1 = 1 ");
-		sql.append("And category_id = " + categoryId + " ");
+		sql.append("AND category_id = " + categoryId + " ");
 		return sql;
 	}
 
@@ -99,6 +99,20 @@ public class ProductsDao extends BaseDao {
 		} catch (Exception e) {
 			return null;
 		}
-		
+	}
+
+	// create query search product by productId
+	private String sqlProductById(int id) {
+		StringBuffer sql = sqlString();
+		sql.append("WHERE 1 = 1 ");
+		sql.append("AND p.id = " + id + " ");
+		sql.append("LIMIT 1 ");
+		return sql.toString();
+	}
+
+	// get all data product with productId
+	public List<ProductsDto> getProductById(int id) {
+		String sql = sqlProductById(id);
+		return jdbcTemplate.query(sql, new ProductsDtoMapper());
 	}
 }
