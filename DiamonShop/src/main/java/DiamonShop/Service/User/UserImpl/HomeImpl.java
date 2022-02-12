@@ -1,4 +1,4 @@
-package DiamonShop.Service.User;
+package DiamonShop.Service.User.UserImpl;
 
 import java.util.List;
 
@@ -13,6 +13,7 @@ import DiamonShop.Dto.ProductsDto;
 import DiamonShop.Entiy.Categories;
 import DiamonShop.Entiy.Menus;
 import DiamonShop.Entiy.Slides;
+import DiamonShop.Service.User.HomeService;
 
 @Service
 public class HomeImpl implements HomeService {

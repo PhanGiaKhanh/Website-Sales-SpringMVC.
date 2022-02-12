@@ -117,3 +117,22 @@ StringBuffer sql = sqlString();
 ...
 
 ================***** Create logic Paginates (Phân trang ) quá hay =======  PaginatesImpl.java ==========================
+
+================***** Use Map<Integer, CartDto> cart=======  CartDao.java==========================
+public int totalQuantity(Map<Integer, CartDto> cart) {
+	int totalQuantity = 0;
+	for (Map.Entry<Integer, CartDto> itemCart : cart.entrySet()) {
+		totalQuantity += itemCart.getValue().getQuantity();
+	}
+	// On Java 10+:
+	// for (var entry : map.entrySet()) {
+	// 	...;
+	// }
+	return totalQuantity;
+}
+
+
+
+
+
+

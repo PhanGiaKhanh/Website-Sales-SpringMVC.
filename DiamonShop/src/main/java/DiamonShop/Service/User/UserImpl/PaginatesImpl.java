@@ -1,8 +1,9 @@
-package DiamonShop.Service.User;
+package DiamonShop.Service.User.UserImpl;
 
 import org.springframework.stereotype.Service;
 
 import DiamonShop.Dto.PaginatesDto;
+import DiamonShop.Service.User.PaginatesService;
 
 @Service
 public class PaginatesImpl implements PaginatesService {

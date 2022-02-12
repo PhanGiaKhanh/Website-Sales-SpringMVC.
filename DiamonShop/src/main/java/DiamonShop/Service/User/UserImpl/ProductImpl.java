@@ -1,4 +1,4 @@
-package DiamonShop.Service.User;
+package DiamonShop.Service.User.UserImpl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import DiamonShop.Dao.ProductsDao;
 import DiamonShop.Dto.ProductsDto;
+import DiamonShop.Service.User.ProductService;
 
 @Service
 public class ProductImpl implements ProductService {
@@ -14,7 +15,7 @@ public class ProductImpl implements ProductService {
 	ProductsDao productsDao;
 
 	public ProductsDto getProductById(int id) {
-		return productsDao.getProductById(id).get(0);
+		return productsDao.getProductsById(id).get(0);
 	}
 
 	public List<ProductsDto> getProductByCategoryId(int categoryId) {

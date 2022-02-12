@@ -1,4 +1,4 @@
-package DiamonShop.Service.User;
+package DiamonShop.Service.User.UserImpl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import DiamonShop.Dao.ProductsDao;
 import DiamonShop.Dto.ProductsDto;
+import DiamonShop.Service.User.CategoriesService;
 
 @Service
 public class CategoriesImpl implements CategoriesService{
