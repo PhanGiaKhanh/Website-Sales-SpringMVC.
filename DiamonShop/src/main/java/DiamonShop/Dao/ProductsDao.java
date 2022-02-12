@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import DiamonShop.Dto.ProductsDto;
 import DiamonShop.Dto.ProductsDtoMapper;
+import java.util.Collections;
 
 @Repository
 public class ProductsDao extends BaseDao {
@@ -34,13 +35,13 @@ public class ProductsDao extends BaseDao {
 		sql.append("p.updated_at ");
 		sql.append("FROM products AS p ");
 		sql.append("JOIN colors AS c ON p.id = c.product_id ");
+		sql.append("WHERE 1 = 1 ");
 		return sql;
 	}
 
 	// create query search product by new product or highlight
 	private String sqlNewAndHilightProduct(boolean newProduct, boolean highlight) {
 		StringBuffer sql = sqlString();
-		sql.append("WHERE 1 = 1 ");
 		if (newProduct) {
 			sql.append("AND p.highlight = true ");
 		}
@@ -61,7 +62,6 @@ public class ProductsDao extends BaseDao {
 	// create query search product by categoryId
 	private StringBuffer sqlProductByCateogyId(int categoryId) {
 		StringBuffer sql = sqlString();
-		sql.append("WHERE 1 = 1 ");
 		sql.append("AND category_id = " + categoryId + " ");
 		return sql;
 	}
@@ -97,14 +97,13 @@ public class ProductsDao extends BaseDao {
 			String sql = sqlProductByCateogyId(categoryId, start, totalPage);
 			return jdbcTemplate.query(sql, new ProductsDtoMapper());
 		} catch (Exception e) {
-			return null;
+			return Collections.emptyList();
 		}
 	}
 
 	// create query search product by productId
 	private String sqlProductById(int id) {
 		StringBuffer sql = sqlString();
-		sql.append("WHERE 1 = 1 ");
 		sql.append("AND p.id = " + id + " ");
 		sql.append("LIMIT 1 ");
 		return sql.toString();

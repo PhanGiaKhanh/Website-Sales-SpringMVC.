@@ -15,6 +15,7 @@
 	<!-- 
 Body Section 
 -->
+<h1>${cart.size()}</h1>
 	<div class="row product-content">
 		<div id="sidebar" class="span3">
 			<div class="well well-small">
