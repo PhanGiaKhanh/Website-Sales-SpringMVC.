@@ -96,9 +96,24 @@ public ModelAndView init() {
 ================***** Để product xuất hiện random =======  ProductsDao ==========================
 sql.append("ORDER BY RAND() ");
 
-================***** Format jstl  >>> MONEY =======  ProductsDao ==========================
+================***** Format jstl  >>> MONEY =======  WEB-INF/views/user/index.jsp==========================
 https://www.javatpoint.com/jstl-formatting-tags
 https://www.javatpoint.com/jstl-fmt-formatnumber-tag
 
 <fmt:formatNumber type="number" groupingUsed="true" value="${Amount}" />
 
+================***** Sử dụng query by if (condition) {  } =======  ProductsDao ==========================
+...
+StringBuffer sql = sqlString();
+	sql.append("WHERE 1 = 1 ");
+	if (newProdut) {
+		sql.append("AND p.highlight = true ");
+	}
+	if (highlight) {
+		sql.append("AND p.product_new = true ");
+	}
+	sql.append("GROUP BY p.id, c.product_id ");
+	sql.append("ORDER BY RAND() ");
+...
+
+================***** Create logic Paginates (Phân trang ) quá hay =======  PaginatesImpl.java ==========================

@@ -11,9 +11,9 @@ Body Section
 		<div id="sidebar" class="span3">
 			<div class="well well-small">
 				<ul class="nav nav-list">
-					<c:forEach var="item1" items="${categories}">
-						<li><a href="products.html"><span
-								class="icon-circle-blank"></span>${item1.name}</a></li>
+					<c:forEach var="item" items="${categories}">
+						<li><a href="<c:url value="/product/${item.id}"/>"><span
+								class="icon-circle-blank"></span>${item.name}</a></li>
 					</c:forEach>
 
 					<li style="border: 0">&nbsp;</li>

@@ -17,8 +17,4 @@ public class HomeController extends BaseController {
 		return baseModelAndView;
 	}
 
-	@GetMapping(value = "product")
-	public ModelAndView product() {
-		return new ModelAndView("user/product");
-	}
 }

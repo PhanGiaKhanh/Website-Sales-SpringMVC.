@@ -1,6 +1,5 @@
 package DiamonShop.Dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -12,7 +11,8 @@ import DiamonShop.Dto.ProductsDtoMapper;
 public class ProductsDao extends BaseDao {
 	private final boolean YES = true;
 	private final boolean NO = false;
-	
+
+	// create query search base product
 	private StringBuffer sqlString() {
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT ");
@@ -36,11 +36,12 @@ public class ProductsDao extends BaseDao {
 		sql.append("JOIN colors AS c ON p.id = c.product_id ");
 		return sql;
 	}
-	
-	private String sqlNewAndHilightProduct(boolean newProdut, boolean highlight) {
+
+	// create query search product by new product or highlight
+	private String sqlNewAndHilightProduct(boolean newProduct, boolean highlight) {
 		StringBuffer sql = sqlString();
 		sql.append("WHERE 1 = 1 ");
-		if (newProdut) {
+		if (newProduct) {
 			sql.append("AND p.highlight = true ");
 		}
 		if (highlight) {
@@ -48,7 +49,7 @@ public class ProductsDao extends BaseDao {
 		}
 		sql.append("GROUP BY p.id, c.product_id ");
 		sql.append("ORDER BY RAND() ");
-		if (newProdut) {
+		if (newProduct) {
 			sql.append("LIMIT 12 ");
 		}
 		if (highlight) {
@@ -56,17 +57,48 @@ public class ProductsDao extends BaseDao {
 		}
 		return sql.toString();
 	}
-	public List<ProductsDto> getDataProductsDto() {
-		List<ProductsDto> productsDtos = new ArrayList<ProductsDto>();
-		String sql = sqlNewAndHilightProduct(NO, YES);
-		productsDtos = jdbcTemplate.query(sql, new ProductsDtoMapper());
-		return productsDtos;
+
+	// create query search product by categoryId
+	private StringBuffer sqlProductByCateogyId(int categoryId) {
+		StringBuffer sql = sqlString();
+		sql.append("WHERE 1 = 1 ");
+		sql.append("And category_id = " + categoryId + " ");
+		return sql;
 	}
-	
+
+	// create query search product by categoryId
+	private String sqlProductByCateogyId(int categoryId, int start, int totalPage) {
+		StringBuffer sql = sqlProductByCateogyId(categoryId);
+		sql.append("LIMIT " + start + ", " + totalPage + " ");
+		return sql.toString();
+	}
+
+	// get all data product
+	public List<ProductsDto> getDataProductsDto() {
+		String sql = sqlNewAndHilightProduct(NO, YES);
+		return jdbcTemplate.query(sql, new ProductsDtoMapper());
+	}
+
+	// get all data new product
 	public List<ProductsDto> getDataNewProductsDto() {
-		List<ProductsDto> productsDtos = new ArrayList<ProductsDto>();
 		String sql = sqlNewAndHilightProduct(YES, NO);
-		productsDtos = jdbcTemplate.query(sql, new ProductsDtoMapper());
-		return productsDtos;
+		return jdbcTemplate.query(sql, new ProductsDtoMapper());
+	}
+
+	// get all data product by categoryId
+	public List<ProductsDto> getAllProductsByCategoryId(int categoryId) {
+		String sql = sqlProductByCateogyId(categoryId).toString();
+		return jdbcTemplate.query(sql, new ProductsDtoMapper());
+	}
+
+	// get all data product and paginates
+	public List<ProductsDto> getAllProductsPaginate(int categoryId, int start, int totalPage) {
+		try {
+			String sql = sqlProductByCateogyId(categoryId, start, totalPage);
+			return jdbcTemplate.query(sql, new ProductsDtoMapper());
+		} catch (Exception e) {
+			return null;
+		}
+		
 	}
 }
