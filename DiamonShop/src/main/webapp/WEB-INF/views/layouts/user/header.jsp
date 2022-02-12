@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@include file="/WEB-INF/views/layouts/user/taglib.jsp"%>
 <header id="header">
 	<div class="row">
 		<div class="span4">
@@ -24,7 +24,7 @@
 				<br> <strong> Support (24/7) : 0800 1234 678 </strong><br>
 				<br>
 			</p>
-			<span class="btn btn-mini">[ 2 ] <span
+			<span class="btn btn-mini">[ ${totalQuantityCart !=null ? totalQuantityCart : '0'} ] <span
 				class="icon-shopping-cart"></span></span> <span
 				class="btn btn-warning btn-mini">$</span> <span class="btn btn-mini">&pound;</span>
 			<span class="btn btn-mini">&euro;</span>
@@ -45,7 +45,8 @@ Navigation Bar Section
 			<div class="nav-collapse">
 				<ul class="nav">
 					<c:forEach var="item" items="${menus}" varStatus="index">
-						<li class="${index.first ? 'active' : ''}"><a href="index.html">${item.name} </a></li>
+						<li class="${index.first ? 'active' : ''}"><a
+							href="index.html">${item.name} </a></li>
 					</c:forEach>
 				</ul>
 				<form action="#" class="navbar-search pull-left">

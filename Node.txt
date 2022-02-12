@@ -131,8 +131,12 @@ public int totalQuantity(Map<Integer, CartDto> cart) {
 	return totalQuantity;
 }
 
-
-
-
+================***** HttpServletRequest request =======  CartController =========================='
+@GetMapping(value = "addCart/{id}")
+public String addCart(@PathVariable int id, HttpSession session, HttpServletRequest request) {
+	...
+	return "redirect:" + request.getHeader("Referer");
+}
+## Sử dụng <Thêm sản phẩm vào giỏ hàng> cho trang <Trang chủ> và <Chi tiết sản phẩm>
 
 

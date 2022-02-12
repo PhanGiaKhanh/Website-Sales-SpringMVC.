@@ -212,7 +212,7 @@ New Products
 										<h4>
 											<a class="defaultBtn" href="product_details.html"
 												title="Click to view"><span class="icon-zoom-in"></span></a>
-											<a class="shopBtn" href="#" title="add to cart"><span
+											<a class="shopBtn" href="<c:url value="/addCart/${item.productId}" />" title="add to cart"><span
 												class="icon-plus"></span></a> <span class="pull-right"><fmt:formatNumber
 													type="number" groupingUsed="true" value="${ item.price }" />đ</span>
 										</h4>

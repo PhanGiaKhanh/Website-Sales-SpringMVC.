@@ -1,8 +1,8 @@
 package DiamonShop.Controller.User;
 
 import java.util.HashMap;
-import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +18,17 @@ public class CartController {
 	@Autowired
 	private CartService cartService;
 	
+	@SuppressWarnings("unchecked")
 	@GetMapping(value = "addCart/{id}")
-	public String addCart(@PathVariable int id, HttpSession session) {
-		Map<Integer, CartDto> mapCart = (Map<Integer, CartDto>) session.getAttribute("Cart");
+	public String addCart(@PathVariable int id, HttpSession session, HttpServletRequest request) {
+		HashMap<Integer, CartDto> mapCart = (HashMap<Integer, CartDto>) session.getAttribute("cart");
 		if (mapCart == null) {
 			mapCart = new HashMap<>();
 		}
 		cartService.addItemCart(id, mapCart);
 		session.setAttribute("cart", mapCart);
-		return "redirect:/chi-tiet-san-pham/" + id;
+		session.setAttribute("totalQuantityCart", cartService.totalQuantity(mapCart));
+		session.setAttribute("totalPriceCart", cartService.totalPrice(mapCart));
+		return "redirect:" + request.getHeader("Referer");
 	}
 }

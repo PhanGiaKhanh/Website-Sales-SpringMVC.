@@ -15,7 +15,7 @@
 	<!-- 
 Body Section 
 -->
-<h1>${cart.size()}</h1>
+	<h1>${cart.size()}</h1>
 	<div class="row product-content">
 		<div id="sidebar" class="span3">
 			<div class="well well-small">
@@ -136,7 +136,7 @@ Body Section
 						<h3>${product.name}${product.productId}</h3>
 						<hr class="soft" />
 
-						<form class="form-horizontal qtyFrm">
+						<form class="form-horizontal qtyFrm" method="get" action="<c:url value="/addCart/${product.productId}" />">
 							<div class="control-group">
 								<label class="control-label"><span><fmt:formatNumber
 											type="number" groupingUsed="true" value="${product.price}" />đ</span></label>
@@ -160,8 +160,8 @@ Body Section
 							<h4>${product.title}</h4>
 							<p>${product.title}
 							<p>
-								<button type="submit" class="shopBtn">
-									<span class=" icon-shopping-cart"></span> Add to cart
+								<button type="button" class="shopBtn">
+									<span class=" icon-shopping-cart"></span> Thêm vào giỏ hàng
 								</button>
 						</form>
 					</div>
@@ -187,7 +187,7 @@ Body Section
 									<img src="<c:url value="/assets/user/img/${item.img}"/>" alt="">
 								</div>
 								<div class="span6">
-									<h5>${item.name} ${loop.index}</h5>
+									<h5>${item.name}${loop.index}</h5>
 									<p>${item.title}</p>
 								</div>
 								<div class="span4 alignR">
@@ -209,7 +209,7 @@ Body Section
 							${loop.last ? '' : '<hr class="soft">' }
 						</c:forEach>
 
-						
+
 					</div>
 				</div>
 
