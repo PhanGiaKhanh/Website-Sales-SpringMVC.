@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="decorator"
+	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@include file="/WEB-INF/views/layouts/user/taglib.jsp"%>
 <head>
 <title>Giỏ hàng</title>
@@ -18,7 +20,6 @@
 						Sản phẩm trong giỏ hàng </small>
 				</h1>
 				<hr class="soften" />
-				<h1>${cart.size() != 0 ? '1':'2'}</h1>
 				<table class="table table-bordered table-condensed">
 					<thead>
 						<tr>
@@ -38,19 +39,20 @@
 								<td><img width="100"
 									src="<c:url value="/assets/user/img/${ item.value.productsDto.img }"/>"
 									alt=""></td>
-								<td>${ item.value.productsDto.title }</td>
-								<td><span class="shopBtn" style="background-color: yellow;"><span
+								<td>F</td>
+								<td><span class="shopBtn"
+									style="background-color: ${ item.value.productsDto.colorName };"><span
 										class="icon-ok"></span></span></td>
 								<td><fmt:formatNumber type="number" groupingUsed="true"
 										value="${ item.value.productsDto.price }" /> ₫</td>
 								<td><input type="number" min="0" max="1000" class="span1"
 									style="max-width: 34px" placeholder="1"
-									id="appendedInputButtons" size="16" type="text"
+									id="quantity-cart-${ item.key }" size="16" type="text"
 									value="${ item.value.quantity }"></td>
-								<td><a href="<c:url value="/editCart/1"/>"
-									class="btn btn-mini btn-danger" type="button"> <span
-										class="icon-edit"></span>
-								</a></td>
+								<td><button data-id="${ item.key }"
+										class="btn btn-mini btn-danger edit-cart" type="button">
+										<span class="icon-edit"></span>
+									</button></td>
 								<td><a href="<c:url value="/deleteCart/${ item.key }"/>"
 									class="btn btn-mini btn-danger" type="button"> <span
 										class="icon-remove"></span>
@@ -71,4 +73,13 @@
 			</div>
 		</div>
 	</div>
+
+	<content tag="script-list-cart"> <script>
+	$(".edit-cart").on("click", function() {
+		let id = $(this).data("id");
+		let quantity = $("#quantity-cart-"+id).val();
+		window.location = "editCart/" + id + "/" + quantity;
+	})
+	</script> </content>
+
 </body>

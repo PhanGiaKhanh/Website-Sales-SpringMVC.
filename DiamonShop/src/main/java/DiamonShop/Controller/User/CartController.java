@@ -22,7 +22,6 @@ public class CartController extends BaseController {
 	
 	
 	// Add item Cart
-	@SuppressWarnings("unchecked")
 	@GetMapping(value = "addCart/{id}")
 	public String addCart(@PathVariable int id, HttpSession session, HttpServletRequest request) {
 		Map<Integer, CartDto> mapCart = (Map<Integer, CartDto>) session.getAttribute("cart");
@@ -30,10 +29,8 @@ public class CartController extends BaseController {
 			mapCart = new HashMap<>();
 		}
 		cartService.addItemCart(id, mapCart);
-		session.setAttribute("cart", mapCart);
-		session.setAttribute("totalQuantityCart", cartService.totalQuantity(mapCart));
-		session.setAttribute("totalPriceCart", cartService.totalPrice(mapCart));
-		return "redirect:" + request.getHeader("Referer");
+		setSessionForCart(session, mapCart);
+		return returnCurrentPage(request);
 	}
 	
 	// Show Cart
@@ -47,14 +44,15 @@ public class CartController extends BaseController {
 	}
 	
 	// Edit Cart
-	@GetMapping(value = "editCart/{id}")
-	public String editCart(@PathVariable int id, HttpSession session, HttpServletRequest request) {
+	@GetMapping(value = "editCart/{id}/{quantity}")
+	public String editCart(@PathVariable int id,@PathVariable int quantity, HttpSession session, HttpServletRequest request) {
 		Map<Integer, CartDto> mapCart = (Map<Integer, CartDto>) session.getAttribute("cart");
 		if (mapCart == null) {
 			mapCart = new HashMap<>();
 		}
-		mapCart = cartService.editCart(id, id, mapCart);
-		return "redirect:" + request.getHeader("Referer");
+		mapCart = cartService.editCart(id, quantity, mapCart);
+		setSessionForCart(session, mapCart);
+		return returnCurrentPage(request);
 	}
 	
 	// Delete Cart
@@ -65,9 +63,17 @@ public class CartController extends BaseController {
 			mapCart = new HashMap<>();
 		}
 		mapCart = cartService.removeCart(id, mapCart);
+		setSessionForCart(session, mapCart);
+		return returnCurrentPage(request);
+	}
+
+	private String returnCurrentPage(HttpServletRequest request) {
+		return "redirect:" + request.getHeader("Referer");
+	}
+
+	private void setSessionForCart(HttpSession session, Map<Integer, CartDto> mapCart) {
 		session.setAttribute("cart", mapCart);
 		session.setAttribute("totalQuantityCart", cartService.totalQuantity(mapCart));
 		session.setAttribute("totalPriceCart", cartService.totalPrice(mapCart));
-		return "redirect:" + request.getHeader("Referer");
 	}
 }

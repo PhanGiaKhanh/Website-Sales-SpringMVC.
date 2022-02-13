@@ -1,4 +1,4 @@
-﻿==========================***** Sử dụng layout cho nhiều trang con Ex: /manage/* by decorator of sitemesh ====================
+﻿==========================***** Decorators with Sử dụng layout cho nhiều trang con Ex: /manage/* by decorator of sitemesh ====================
 B1 > pom.xml
 <!-- sitemesh -->
 <dependency>
@@ -42,6 +42,18 @@ B1 >> user.jsp
 B2 >> <file>.jsp
 khai báo title EX: index.jsp 
 <title>Home</title>
+
+
+================= ***** Decorators with <content> chèn <script>  ========================================
+B1 >> views/user/cart/list_cart.jsp 
+<content tag="script-list-cart"> 
+	<script>
+		......
+	</script> 
+</content>
+B2 >> views/layout/user.jsp
+
+<decorator:getProperty property="page.script-list-cart"/>
 
 ================= ***** add file <assests> for all file jsp=================================
 <JSTL> https://www.javatpoint.com/jstl-core-tags
@@ -139,4 +151,9 @@ public String addCart(@PathVariable int id, HttpSession session, HttpServletRequ
 }
 ## Sử dụng <Thêm sản phẩm vào giỏ hàng> cho trang <Trang chủ> và <Chi tiết sản phẩm>
 
+================*****  =======  CartController =========================='
 
+<button data-id=" 7  " ....  type="button"> .... </button>
+<script>
+	let id = $(this).data("id"); ## id = 7
+</script>
