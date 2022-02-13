@@ -22,6 +22,7 @@ public class CartController extends BaseController {
 	
 	
 	// Add item Cart
+	@SuppressWarnings("unchecked")
 	@GetMapping(value = "addCart/{id}")
 	public String addCart(@PathVariable int id, HttpSession session, HttpServletRequest request) {
 		Map<Integer, CartDto> mapCart = (Map<Integer, CartDto>) session.getAttribute("cart");
@@ -44,6 +45,7 @@ public class CartController extends BaseController {
 	}
 	
 	// Edit Cart
+	@SuppressWarnings("unchecked")
 	@GetMapping(value = "editCart/{id}/{quantity}")
 	public String editCart(@PathVariable int id,@PathVariable int quantity, HttpSession session, HttpServletRequest request) {
 		Map<Integer, CartDto> mapCart = (Map<Integer, CartDto>) session.getAttribute("cart");
@@ -56,6 +58,7 @@ public class CartController extends BaseController {
 	}
 	
 	// Delete Cart
+	@SuppressWarnings("unchecked")
 	@GetMapping(value = "deleteCart/{id}")
 	public String deleteCart(@PathVariable int id, HttpSession session, HttpServletRequest request) {
 		Map<Integer, CartDto> mapCart = (Map<Integer, CartDto>) session.getAttribute("cart");
