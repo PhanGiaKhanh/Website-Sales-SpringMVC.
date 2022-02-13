@@ -43,7 +43,7 @@
 					</a> <a href="#"><span class="icon-user"></span> My Account</a> <a
 						href="register.html"><span class="icon-edit"></span> Free
 						Register </a> <a href="contact.html"><span class="icon-envelope"></span>
-						Contact us</a> <a href="cart.html"><span
+						Contact us</a> <a href="<c:url value="/showCart" /> "><span
 						class="icon-shopping-cart"></span> ${totalQuantityCart !=null ? totalQuantityCart : '0'} Item(s) - <span
 						class="badge badge-warning"> <fmt:formatNumber type="number" groupingUsed="true" value="${totalPriceCart != null ? totalPriceCart : '0' }"/> đ</span></a>
 				</div>

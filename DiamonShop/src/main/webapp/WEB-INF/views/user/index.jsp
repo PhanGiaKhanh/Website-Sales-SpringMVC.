@@ -16,10 +16,8 @@ Body Section
 								class="icon-circle-blank"></span>${item.name}</a></li>
 					</c:forEach>
 
-					<li style="border: 0">&nbsp;</li>
-					<li><a class="totalInCart" href="cart.html"><strong>Total
-								Amount <span class="badge badge-warning pull-right"
-								style="line-height: 18px;">$448.42</span>
+					<li><a class="totalInCart" href="<c:url value="/showCart" /> "><strong>Đã mua <span class="badge badge-warning pull-right"
+								style="line-height: 18px;"><fmt:formatNumber type="number" groupingUsed="true" value="${totalPriceCart != null ? totalPriceCart : '0' }"/> đ</span>
 						</strong></a></li>
 				</ul>
 			</div>

@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="span4">
 			<h1>
-				<a class="logo" href="index.html"><span>Twitter Bootstrap
+				<a class="logo" href="<c:url value="home" /> "><span>Twitter Bootstrap
 						ecommerce template</span> <img
 					src="<c:url value="/assets/user/img/logo-bootstrap-shoping-cart.png" /> "
 					alt="bootstrap sexy shop"> </a>
@@ -24,8 +24,8 @@
 				<br> <strong> Support (24/7) : 0800 1234 678 </strong><br>
 				<br>
 			</p>
-			<span class="btn btn-mini">[ ${totalQuantityCart !=null ? totalQuantityCart : '0'} ] <span
-				class="icon-shopping-cart"></span></span> <span
+			<a href="<c:url value="showCart" /> " class="btn btn-mini">[ ${totalQuantityCart !=null ? totalQuantityCart : '0'} ] <span
+				class="icon-shopping-cart"></span></a> <span
 				class="btn btn-warning btn-mini">$</span> <span class="btn btn-mini">&pound;</span>
 			<span class="btn btn-mini">&euro;</span>
 		</div>
@@ -46,7 +46,7 @@ Navigation Bar Section
 				<ul class="nav">
 					<c:forEach var="item" items="${menus}" varStatus="index">
 						<li class="${index.first ? 'active' : ''}"><a
-							href="index.html">${item.name} </a></li>
+							href="<c:url value="/${item.url}" /> ">${item.name} </a></li>
 					</c:forEach>
 				</ul>
 				<form action="#" class="navbar-search pull-left">
