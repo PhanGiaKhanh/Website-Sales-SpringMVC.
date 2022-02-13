@@ -2,11 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
-<%@include file="/WEB-INF/views/layouts/user/taglib.jsp" %>
+<%@include file="/WEB-INF/views/layouts/user/taglib.jsp"%>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title><decorator:title default="Master-Layout"/></title>
+<title><decorator:title default="Master-Layout" /></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -38,31 +38,34 @@
 							class="icon-youtube"></span></a> <a href="#"><span
 							class="icon-tumblr"></span></a>
 					</div>
-					<a class="active" href="/DiamonShop/home"> <span class="icon-home"></span>
-						Home
+					<a class="active" href="<c:url value="/home"/>"> <span
+						class="icon-home"></span> Home
 					</a> <a href="#"><span class="icon-user"></span> My Account</a> <a
-						href="register.html"><span class="icon-edit"></span> Free
-						Register </a> <a href="contact.html"><span class="icon-envelope"></span>
+						href="<c:url value="/dang-ky"/>"><span class="icon-edit"></span>
+						Đăng ký </a> <a href="contact.html"><span class="icon-envelope"></span>
 						Contact us</a> <a href="<c:url value="/showCart" /> "><span
-						class="icon-shopping-cart"></span> ${totalQuantityCart !=null ? totalQuantityCart : '0'} Item(s) - <span
-						class="badge badge-warning"> <fmt:formatNumber type="number" groupingUsed="true" value="${totalPriceCart != null ? totalPriceCart : '0' }"/> đ</span></a>
+						class="icon-shopping-cart"></span> ${totalQuantityCart !=null ? totalQuantityCart : '0'}
+						Item(s) - <span class="badge badge-warning"> <fmt:formatNumber
+								type="number" groupingUsed="true"
+								value="${totalPriceCart != null ? totalPriceCart : '0' }" /> đ
+					</span></a>
 				</div>
 			</div>
 		</div>
-	</div> 	
+	</div>
 
 	<!--
 Lower Header Section 
 -->
 	<div class="container">
 		<div id="gototop"></div>
-		
+
 		<!-- /Header -->
 		<%@include file="/WEB-INF/views/layouts/user/header.jsp"%>
-		
+
 		<!-- /Body -->
 		<decorator:body />
-		
+
 		<!-- /Footer -->
 		<%@include file="/WEB-INF/views/layouts/user/footer.jsp"%>
 
@@ -96,8 +99,8 @@ Lower Header Section
 	<script
 		src="<c:url value="/assets/user/js/jquery.scrollTo-1.4.3.1-min.js" />"></script>
 	<script src="<c:url value="/assets/user/js/shop.js" />"></script>
-	
-	<decorator:getProperty property="page.script-list-cart"/>
-	
+
+	<decorator:getProperty property="page.script-list-cart" />
+
 </body>
 </html>

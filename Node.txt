@@ -151,9 +151,26 @@ public String addCart(@PathVariable int id, HttpSession session, HttpServletRequ
 }
 ## Sử dụng <Thêm sản phẩm vào giỏ hàng> cho trang <Trang chủ> và <Chi tiết sản phẩm>
 
-================*****  =======  CartController =========================='
-
+================***** Create attribute for button >> data-id="..." =======  list_cart.jsp=========================='
 <button data-id=" 7  " ....  type="button"> .... </button>
 <script>
 	let id = $(this).data("id"); ## id = 7
 </script>
+
+================*****  Hash password =======  CartController =========================='
+B1 >>
+<!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
+<dependency>
+    <groupId>org.mindrot</groupId>
+    <artifactId>jbcrypt</artifactId>
+    <version>0.4</version>
+</dependency>
+B2 >>
+user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12)) );
+## BCrypt.hashpw( <password> , <BCrypt.gensalt(<Number>)> ) 		>> Hàm hash Password
+## BCrypt.gensalt(<Number>) 					>> Hàm tạo độ bảo mật <Number> càng cao bảo mật càng cao
+
+
+
+
+
