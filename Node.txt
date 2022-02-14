@@ -55,6 +55,19 @@ B2 >> views/layout/user.jsp
 
 <decorator:getProperty property="page.script-list-cart"/>
 
+----------------OR--------------------------------
+===Page use Content===
+<div class="menubar" >
+   <decorator:getProperty property="page.navig" />
+</div>
+===Content===
+<body>
+   <content tag="navig">
+      my menu \o/
+   </content>
+...
+</body>
+
 ================= ***** add file <assests> for all file jsp=================================
 <JSTL> https://www.javatpoint.com/jstl-core-tags
 

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
-<title>Đăng ký</title>
+<title>Thanh toán</title>
 </head>
 <body>
 
@@ -102,74 +102,50 @@ Body Section
 			<hr class="soft" />
 
 			<div class="row">
-				<div class="span4">
-					<div class="well">
-						<h5>Đăng ký tài khoản</h5>
-						<form:form action="dang-ky" method="POST" modelAttribute="user">
+				<div class="span4" style="width: 700px">
+					<div class="well" style="width: 94%">
+						<form:form class="form-horizontal" action="checkout" method="POST" modelAttribute="bills">
+							<h3>Thanh toán đơn hàng</h3>
 							<div class="control-group">
-								<label class="control-label" for="email">Email</label>
+								<label class="control-label">Họ và tên <sup>*</sup></label>
 								<div class="controls">
-									<form:input type="email" class="span3" path="email"
-										placeholder="Mời nhập email" />
+									<form:input type="text" placeholder="Mời nhập họ và tên" path="name"/>
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="password">Mật khẩu</label>
+								<label class="control-label">Email <sup>*</sup></label>
 								<div class="controls">
-									<form:input type="password" class="span3" path="password"
-										placeholder="Mời nhập mật khẩu" />
+									<form:input type="text" placeholder="Mời nhập email" path="email" />
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="name">Họ và tên</label>
+								<label class="control-label">Liên hệ <sup>*</sup></label>
 								<div class="controls">
-									<form:input type="text" class="span3" path="name"
-										placeholder="Mời nhập họ và tên" />
+									<form:input type="text" placeholder="Mời nhập số điện thoại" path="phone"/>
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="address">Địa chỉ</label>
+								<label class="control-label">Địa chỉ <sup>*</sup></label>
 								<div class="controls">
-									<form:input type="text" class="span3" path="address"
-										placeholder="Mời nhập địa chỉ" />
+									<form:textarea type="text" placeholder="Mời nhập địa chỉ" path="address"/>
 								</div>
 							</div>
-							<div class="controls">
-								<button type="submit" class="btn block">Đăng ký thành
-									viên</button>
+							<div class="control-group">
+								<label class="control-label">Ghi chú<sup>*</sup></label>
+								<div class="controls">
+									<form:textarea type="text" placeholder="Mời nhập ghi chú" path="note"/>
+								</div>
 							</div>
-						</form:form>
+							<div class="control-group">
+								<div class="controls">
+									<input type="submit" name="submitAccount" value="Register"
+										class="shopBtn exclusive">
+								</div>
+							</div>
+						</form:form >
 					</div>
 				</div>
 				<div class="span1">&nbsp;</div>
-				<div class="span4">
-					<div class="well">
-						<h5>Đăng nhập hệ thống</h5>
-						<small style="color: red">${statusLogin}</small>
-						<form:form action="dang-nhap" method="POST" modelAttribute="user">
-							<div class="control-group">
-								<label class="control-label" for="email">Email</label>
-								<div class="controls">
-									<form:input type="email" class="span3" path="email"
-										placeholder="Mời nhập email" />
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="password">Mật khẩu</label>
-								<div class="controls">
-									<form:input type="password" class="span3" path="password"
-										placeholder="Mời nhập mật khẩu" />
-								</div>
-							</div>
-							<div class="control-group">
-								<div class="controls">
-									<button type="submit" class="defaultBtn">Đăng nhập</button>
-									<a href="#">Quên mật khẩu?</a>
-								</div>
-							</div>
-						</form:form>
-					</div>
-				</div>
 			</div>
 
 		</div>

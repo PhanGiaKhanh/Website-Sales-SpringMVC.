@@ -40,8 +40,17 @@
 					</div>
 					<a class="active" href="<c:url value="/home"/>"> <span
 						class="icon-home"></span> Home
-					</a> <a href="#"><span class="icon-user"></span> My Account</a> <a
-						href="<c:url value="/dang-ky"/>"><span class="icon-edit"></span>
+					</a>
+					<c:if test="${not empty loginInfo }">
+						<a href="#"><span class="icon-user"></span> ${loginInfo.name}</a>
+						<a href="<c:url value="/dang-xuat"/>"><span class="icon-edit"></span>
+							Đăng xuất </a>
+					</c:if>
+					<c:if test="${empty loginInfo }">
+						<a href="<c:url value="/dang-ky"/>"><span class="icon-edit"></span>
+							Đăng ký </a>
+					</c:if>
+					<a href="<c:url value="/dang-ky"/>"><span class="icon-edit"></span>
 						Đăng ký </a> <a href="contact.html"><span class="icon-envelope"></span>
 						Contact us</a> <a href="<c:url value="/showCart" /> "><span
 						class="icon-shopping-cart"></span> ${totalQuantityCart !=null ? totalQuantityCart : '0'}

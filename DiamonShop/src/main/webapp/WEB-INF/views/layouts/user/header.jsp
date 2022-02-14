@@ -5,8 +5,8 @@
 	<div class="row">
 		<div class="span4">
 			<h1>
-				<a class="logo" href="<c:url value="home" /> "><span>Twitter Bootstrap
-						ecommerce template</span> <img
+				<a class="logo" href="<c:url value="home" /> "><span>Twitter
+						Bootstrap ecommerce template</span> <img
 					src="<c:url value="/assets/user/img/logo-bootstrap-shoping-cart.png" /> "
 					alt="bootstrap sexy shop"> </a>
 			</h1>
@@ -24,10 +24,11 @@
 				<br> <strong> Support (24/7) : 0800 1234 678 </strong><br>
 				<br>
 			</p>
-			<a href="<c:url value="showCart" /> " class="btn btn-mini">[ ${totalQuantityCart !=null ? totalQuantityCart : '0'} ] <span
-				class="icon-shopping-cart"></span></a> <span
-				class="btn btn-warning btn-mini">$</span> <span class="btn btn-mini">&pound;</span>
-			<span class="btn btn-mini">&euro;</span>
+			<a href="<c:url value="showCart" /> " class="btn btn-mini">[
+				${totalQuantityCart !=null ? totalQuantityCart : '0'} ] <span
+				class="icon-shopping-cart"></span>
+			</a> <span class="btn btn-warning btn-mini">$</span> <span
+				class="btn btn-mini">&pound;</span> <span class="btn btn-mini">&euro;</span>
 		</div>
 	</div>
 </header>
@@ -53,28 +54,35 @@ Navigation Bar Section
 					<input type="text" placeholder="Search" class="search-query span2">
 				</form>
 				<ul class="nav pull-right">
-					<li class="dropdown"><a data-toggle="dropdown"
-						class="dropdown-toggle" href="#"><span class="icon-lock"></span>
-							Đăng nhập <b class="caret"></b></a>
-						<div class="dropdown-menu">
-							<form class="form-horizontal loginFrm">
-								<div class="control-group">
-									<input type="text" class="span2" id="inputEmail"
-										placeholder="Email">
-								</div>
-								<div class="control-group">
-									<input type="password" class="span2" id="inputPassword"
-										placeholder="Password">
-								</div>
-								<div class="control-group">
-									<label class="checkbox"> <input type="checkbox">
-										Remember me
-									</label>
-									<button type="submit" class="shopBtn btn-block">Sign
-										in</button>
-								</div>
-							</form>
-						</div></li>
+					<c:if test="${empty loginInfo }">
+						<li class="dropdown"><a data-toggle="dropdown"
+							class="dropdown-toggle" href="#"><span class="icon-lock"></span>
+								Đăng nhập <b class="caret"></b></a>
+							<div class="dropdown-menu">
+								<form class="form-horizontal loginFrm">
+									<div class="control-group">
+										<input type="text" class="span2" id="inputEmail"
+											placeholder="Email">
+									</div>
+									<div class="control-group">
+										<input type="password" class="span2" id="inputPassword"
+											placeholder="Password">
+									</div>
+									<div class="control-group">
+										<label class="checkbox"> <input type="checkbox">
+											Remember me
+										</label>
+										<button type="submit" class="shopBtn btn-block">Sign
+											in</button>
+									</div>
+								</form>
+							</div></li>
+					</c:if>
+					<c:if test="${not empty loginInfo }">
+						<li>
+							<a href="#">${loginInfo.name} <b class="caret"></b></a>
+						</li>
+					</c:if>
 				</ul>
 			</div>
 		</div>
