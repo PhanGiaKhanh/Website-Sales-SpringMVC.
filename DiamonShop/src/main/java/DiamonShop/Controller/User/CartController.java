@@ -1,5 +1,6 @@
 package DiamonShop.Controller.User;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import DiamonShop.Dto.CartDto;
@@ -35,7 +35,7 @@ public class CartController extends BaseController {
 	public String addCart(@PathVariable int id, HttpSession session, HttpServletRequest request) {
 		Map<Integer, CartDto> mapCart = (Map<Integer, CartDto>) session.getAttribute("cart");
 		if (mapCart == null) {
-			mapCart = new HashMap<>();
+			mapCart = new HashMap<Integer, CartDto>();
 		}
 		cartService.addItemCart(id, mapCart);
 		setSessionForCart(session, mapCart);
@@ -59,7 +59,7 @@ public class CartController extends BaseController {
 			HttpServletRequest request) {
 		Map<Integer, CartDto> mapCart = (Map<Integer, CartDto>) session.getAttribute("cart");
 		if (mapCart == null) {
-			mapCart = new HashMap<>();
+			mapCart = new HashMap<Integer, CartDto>();
 		}
 		mapCart = cartService.editCart(id, quantity, mapCart);
 		setSessionForCart(session, mapCart);
@@ -72,7 +72,7 @@ public class CartController extends BaseController {
 	public String deleteCart(@PathVariable int id, HttpSession session, HttpServletRequest request) {
 		Map<Integer, CartDto> mapCart = (Map<Integer, CartDto>) session.getAttribute("cart");
 		if (mapCart == null) {
-			mapCart = new HashMap<>();
+			mapCart = new HashMap<Integer, CartDto>();
 		}
 		mapCart = cartService.removeCart(id, mapCart);
 		setSessionForCart(session, mapCart);
@@ -84,7 +84,8 @@ public class CartController extends BaseController {
 	}
 
 	private void setSessionForCart(HttpSession session, Map<Integer, CartDto> mapCart) {
-		session.setAttribute("cart", mapCart);
+		Serializable result = (Serializable) mapCart;
+		session.setAttribute("cart", result);
 		session.setAttribute("totalQuantityCart", cartService.totalQuantity(mapCart));
 		session.setAttribute("totalPriceCart", cartService.totalPrice(mapCart));
 	}

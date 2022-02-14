@@ -14,14 +14,12 @@ public class AccountImpl implements AccountService {
 	UserDao userDao;
 
 	// add Account and hash password
-	@Override
 	public int addAccount(User user) {
 		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12)));
 		return userDao.addAcount(user);
 	}
 
 	// check Account
-	@Override
 	public User checkAccount(User user) {
 		String password = user.getPassword();
 		user = userDao.findUserByAcount(user);

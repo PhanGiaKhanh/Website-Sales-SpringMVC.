@@ -21,16 +21,17 @@
 				</h1>
 				<hr class="soften" />
 				<table class="table table-bordered table-condensed">
+				<caption></caption>
 					<thead>
 						<tr>
-							<th>Hình ảnh</th>
-							<th>Mô tả</th>
-							<th>Màu sắc</th>
-							<th>Giá bán</th>
-							<th>Số lượng</th>
-							<th>Chỉnh sửa</th>
-							<th>Xóa</th>
-							<th>Tổng tiền</th>
+							<th scope="col">Hình ảnh</th>
+							<th scope="col">Mô tả</th>
+							<th scope="col">Màu sắc</th>
+							<th scope="col">Giá bán</th>
+							<th scope="col">Số lượng</th>
+							<th scope="col">Chỉnh sửa</th>
+							<th scope="col">Xóa</th>
+							<th scope="col">Tổng tiền</th>
 						</tr>
 					</thead>
 					<tbody>

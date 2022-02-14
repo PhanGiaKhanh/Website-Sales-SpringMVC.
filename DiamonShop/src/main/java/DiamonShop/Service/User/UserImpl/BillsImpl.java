@@ -20,7 +20,6 @@ public class BillsImpl implements BillsService {
 		return billsDao.addBills(bills);
 	}
 
-	@Override
 	public void addBillsDetail(Map<Integer, CartDto> mapCart) {
 		int idBills = billsDao.getIdLastBills();
 		

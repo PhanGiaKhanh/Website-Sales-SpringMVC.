@@ -2,7 +2,6 @@ package DiamonShop.Dao;
 
 import org.springframework.stereotype.Repository;
 
-import DiamonShop.Dto.ProductsDto;
 import DiamonShop.Entiy.MapperUser;
 import DiamonShop.Entiy.User;
 
@@ -10,23 +9,15 @@ import DiamonShop.Entiy.User;
 public class UserDao extends BaseDao {
 
 	public int addAcount(User user) {
-		StringBuffer sql = new StringBuffer();
-		sql.append("INSERT ");
-		sql.append("INTO users ");
-		sql.append("( ");
-		sql.append("email, ");
-		sql.append("password, ");
-		sql.append("name, ");
-		sql.append("address ");
-		sql.append(") ");
-		sql.append("values ");
-		sql.append("( ");
-		sql.append("'" + user.getEmail() + "', ");
-		sql.append("'" + user.getPassword() + "', ");
-		sql.append("'" + user.getName() + "', ");
-		sql.append("'" + user.getAddress() + "' ");
-		sql.append(") ");
-		return jdbcTemplate.update(sql.toString());
+		String sql = "INSERT  INO users (email, password, name, address )"
+		+ "values "
+		+ "( "
+		+ "'" + user.getEmail() + "', "
+		+ "'" + user.getPassword() + "', "
+		+ "'" + user.getName() + "', "
+		+ "'" + user.getAddress() + "' "
+		+ ") ";
+		return jdbcTemplate.update(sql);
 	}
 	public User findUserByAcount(User user) {
 		String sql = "SELECT * FROM users WHERE email = '" + user.getEmail() + "'";

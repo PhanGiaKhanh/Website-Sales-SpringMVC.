@@ -14,27 +14,22 @@ public class CartImpl implements CartService {
 	@Autowired
 	private CartDao cartDao;
 
-	@Override
 	public Map<Integer, CartDto> addItemCart(int id, Map<Integer, CartDto> cart) {
 		return cartDao.addItemCart(id, cart);
 	}
 
-	@Override
 	public Map<Integer, CartDto> editCart(int id, int quantity, Map<Integer, CartDto> cart) {
 		return cartDao.editCart(id, quantity, cart);
 	}
 
-	@Override
 	public Map<Integer, CartDto> removeCart(int id, Map<Integer, CartDto> cart) {
 		return cartDao.removeCart(id, cart);
 	}
 
-	@Override
 	public int totalQuantity(Map<Integer, CartDto> cart) {
 		return cartDao.totalQuantity(cart);
 	}
 
-	@Override
 	public double totalPrice(Map<Integer, CartDto> cart) {
 		return cartDao.totalPrice(cart);
 	}
